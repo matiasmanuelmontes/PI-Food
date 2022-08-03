@@ -3,7 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
 const { Recipe, Diet } = require('../db');
-const {  Op , addDiet} = require('sequelize');
+const { Op, addDiet } = require('sequelize');
 
 
 const router = Router();
@@ -11,7 +11,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-    /* var stepByStep = analyzedInstructions[0].steps.map(el => el.step) */ 
+/* var stepByStep = analyzedInstructions[0].steps.map(el => el.step) */
 
 const getRecipeApi = async function () {
 
@@ -19,39 +19,40 @@ const getRecipeApi = async function () {
     let recipeInfo
     let recipeInfoStepByStep
     let stepByStep1
-    
+
 
     recipeApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=575618d2a28a4c40807b0a6a9faee8e4&addRecipeInformation=true`)
 
     recipeInfoStepByStep = await recipeApi.data.results.map(el => {
 
-            if (el.analyzedInstructions[0] !== undefined) {
-                stepByStep1 = el.analyzedInstructions[0].steps.map(elem => elem.step )
-            } else {
-                stepByStep1 = "There is no stepByStep"
-            }
-            return stepByStep1
-         }) 
+        if (el.analyzedInstructions[0] !== undefined) {
+            stepByStep1 = el.analyzedInstructions[0].steps.map(elem => elem.step)
+        } else {
+            stepByStep1 = "There is no stepByStep"
+        }
+        return stepByStep1
+    })
 
-        
+
     recipeInfo = await recipeApi.data.results.map(el => {
         return {
+            id: el.id,
             name: el.title,
             dishSummary: el.summary,
             healthScore: el.healthScore,
-           // la propiedad stepByStep se incorpora a continuacion
+            // la propiedad stepByStep se incorpora a continuacion
             image: el.image
         };
     });
-    
-    for (let i = 0; i < recipeInfo.length; i++ ){
-    recipeInfo[i].stepByStep = recipeInfoStepByStep[i]
+
+    for (let i = 0; i < recipeInfo.length; i++) {
+        recipeInfo[i].stepByStep = recipeInfoStepByStep[i]
     }
-   
+
     /* console.log(recipeInfo) */
 
     return recipeInfo;
-} 
+}
 
 const getRecipeDb = async function () {
 
@@ -63,18 +64,7 @@ const getRecipeDb = async function () {
             through: {
                 attributes: [],
             },
-        },
-
-        raw: true,  // esto es para que en consola se vea bien
-        nest: true, // esto es para que en consola se vea bien
-        /* where: {
-            name: {
-                [Op.iLike]: "%" + name + "%"
-            }
-        }, */
-        order: [
-            ['name', 'ASC']
-        ]
+        }
     })
 }
 
@@ -87,34 +77,103 @@ const getAllRecipes = async function () {
 
 }
 
+
+
 router.get('/allOrName', async (req, res) => {
 
-     const name = req.query.name
+    const name = req.query.name
     let totalRecipes = await getAllRecipes();
-    console.log (totalRecipes) 
-     if (name){
+    /* console.log (totalRecipes) */
+    if (name) {
         let recipeName = await totalRecipes.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
         recipeName.length ?
-        res.status(200).send(recipeName) :
-        res.status(404).send("Cant find the recipe")
+            res.status(200).send(recipeName) :
+            res.status(404).send("Cant find the recipe")
     } else {
-        res.status(200).send(totalRecipes) 
-    } 
+        res.status(200).send(totalRecipes)
+    }
 
+})
+
+/* router.get('/:id', async (req, res) => {
+
+   const id = req.params.id
+  let totalRecipes = await getAllRecipes();
+  console.log(id)
+  
+  console.log(totalRecipes)
+  
+   if (id){
+      let recipeId = await totalRecipes.filter(el => el.id === id)
+      console.log("recipeId")
+      console.log(recipeId)
+      recipeId > - 1 ?
+      res.status(200).send(recipeId) :
+      res.status(404).send("Cant find the recipe")
+  } 
+
+})  */
+
+router.get('/:id', async (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
+
+    try {
+
+        let recipe;
+        let recipeApi
+        let recipeInfoStepByStep
+        
+        const id = req.params.id;
+
+        if (typeof id === "string" && id.length > 8) {
+            recipe = await Recipe.findAll({
+                where: { id: id },
+                include: {
+                    model: Diet,
+                    attributes: ['name'],
+                    through: {
+                        attributes: [],
+                    },
+                }
+            })  
+
+        } else {
+            response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=575618d2a28a4c40807b0a6a9faee8e4`)
+            recipeApi = response.data
+
+                if (recipeApi.analyzedInstructions[0] !== undefined) {
+                    recipeInfoStepByStep  = recipeApi.analyzedInstructions[0].steps.map(elem => elem.step)
+                } else {
+                    recipeInfoStepByStep = "There is no stepByStep"
+                }
+               
+            recipe =  {
+                    id: recipeApi.id,
+                    name: recipeApi.title,
+                    dishSummary: recipeApi.summary,
+                    healthScore: recipeApi.healthScore,
+                    stepByStep : recipeInfoStepByStep,
+                    image: recipeApi.image,
+                    diets: recipeApi.diets
+                };
+          
+            }
+            
+        res.status(201).send(recipe)
+
+    } catch (error) {
+        next(error)
+    }
 })
 
 router.post('/addRecipe', async (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
     try {
-        var { name, dishSummary, healthScore, stepByStep, image, createdInDb, diets} = req.body;
+        var { name, dishSummary, healthScore, stepByStep, image, createdInDb, diets } = req.body;
 
         function toUpperCasefunc(arg) {
             var b = arg[0].toUpperCase() + arg.substring(1)
             return b
         }
         name = toUpperCasefunc(name)
-
-        /* console.log(Diet) */
-
 
         let newRecipe = await Recipe.create({
             name,
@@ -129,21 +188,10 @@ router.post('/addRecipe', async (req, res, next) => {    // el next esta para qu
             where: { name: diets }
         })
 
-        console.log(dietDb)
-
         await newRecipe.addDiet(dietDb)
 
-        /* var c = "";
+        res.status(201).send(newRecipe)
 
-        for (let i = 0; i < Diet.length; i++) {
-            c = c + Diet[i].name
-        } */
-
-        /* console.log (newRecipe) */
-        /* console.log(dietDb) */
-
-        res.status(201).send(newRecipe) 
- 
     } catch (error) {
         next(error)
     }
