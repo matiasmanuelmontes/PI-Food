@@ -37,7 +37,7 @@ router.get('/allDiets', async (req, res, next) => {
              res.send(allDiets) 
      });
 
-     router.post('/allDiets/add', (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
+    /*  router.post('/allDiets/add', (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
     
         const {name} = req.body;
         Diet.create({ name})
@@ -48,6 +48,6 @@ router.get('/allDiets', async (req, res, next) => {
         .catch(error => next(error))
     
     
-    })
+    }) */
 
 module.exports = router;

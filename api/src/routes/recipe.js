@@ -41,7 +41,8 @@ const getRecipeApi = async function () {
             dishSummary: el.summary,
             healthScore: el.healthScore,
             // la propiedad stepByStep se incorpora a continuacion
-            image: el.image
+            image: el.image,
+            diets: el.diets
         };
     });
 
