@@ -51,13 +51,13 @@ export function filterRecipeByDiet(payload){
 }
 }
 
-/* export function getGenres(){
+ export function getDiets(){
     return function(dispatch){
-        axios.get('http://localhost:3001/api/genres/')
-        .then((genres) => {
+        axios.get('http://localhost:3001/api/diets/allDiets')
+        .then((diets) => {
             dispatch({
-                type: GET_GENRES,
-                payload: genres.data
+                type: 'GET_DIETS',
+                payload: diets.data
             })
         })
         .catch((error) => {
@@ -66,11 +66,26 @@ export function filterRecipeByDiet(payload){
     }
 }
 
-export function postVidegame(payload){
+export function postRecipe(payload){
     return async function(dispatch){
-       const response = axios.post('http://localhost:3001/api/genres/', payload)
+       const response = axios.post('http://localhost:3001/api/recipes/addRecipe', payload)
         console.log(response)
         return response;
         
     }
-} */
+} 
+
+ export function getRecipeDetail(id){
+    return async function(dispatch){
+        try{
+            var json = await  axios.get('http://localhost:3001/api/recipes/' + id)
+            return dispatch ({
+                type: 'GET_RECIPE_DETAIL',
+                payload: json.data
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+} 

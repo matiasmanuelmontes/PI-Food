@@ -1,0 +1,27 @@
+.paginated {
+    list-style-type: none;
+    text-align: center
+}
+
+.number {
+    
+    background-color: white;
+    border: black 2px solid;
+    display: inline;
+    margin-right: 10px;
+}
+
+  .eachA {
+    color: black;
+    padding: 0 4px;
+    text-decoration: none;
+    background-color: grey;
+  }
+  
+    .eachA:hover {
+    background-color: white;
+    color: black;
+    cursor:alias;
+   } 
+
+

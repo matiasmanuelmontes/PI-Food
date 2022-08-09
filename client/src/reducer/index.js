@@ -2,7 +2,8 @@
 const initialState = {
   recipes: [],
   filteredRecipes: [],
-  diets: []
+  diets: [],
+  detail: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -128,19 +129,25 @@ export default function reducer(state = initialState, action) {
         filteredRecipes: dietFiltered
       } 
 
-     /* case POST_VIDEOGAME:
+      case 'POST_RECIPE':
 
       return {
         ...state,
+      }  
 
-      }  */
-
-      /* case GET_GENRES:
+       case 'GET_DIETS':
 
       return {
         ...state,
-        genres: action.payload
-      } */
+        diets: action.payload
+      } 
+
+      case 'GET_RECIPE_DETAIL':
+      return {
+        ...state,
+        detail: action.payload,
+      }
+      
     default:
       return state
   }

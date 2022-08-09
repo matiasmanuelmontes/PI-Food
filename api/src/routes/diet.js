@@ -1,19 +1,23 @@
+/* require('dotenv').config(); */
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
 const { Recipe, Diet } = require('../db');
 const {  Op } = require('sequelize');
+const { getKey } = require('../keys');
 
-
+ 
 const router = Router();
+
+const API_KEYA = getKey();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/allDiets', async (req, res, next) => {
 
-     const dietApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=575618d2a28a4c40807b0a6a9faee8e4&addRecipeInformation=true`) 
+     const dietApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`) 
     
     /* vegetarian, vegan, glutenFree  */
      

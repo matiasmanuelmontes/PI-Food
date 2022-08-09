@@ -2,6 +2,7 @@ import {useState} from 'react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { searchRecipe } from '../actions';
+import '../styledComponents/searchBar.css';
 
 
 export default function SearchBar(){
@@ -11,7 +12,8 @@ export default function SearchBar(){
 
     function onSubmit(event){
         event.preventDefault();
-        dispatch(searchRecipe(search))
+        dispatch(searchRecipe(search));
+        setSearch('')
     }
 
     function onInputChange(event){

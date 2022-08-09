@@ -1,27 +1,30 @@
+/* require('dotenv').config(); */
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios');
 const { Recipe, Diet } = require('../db');
 const { Op, addDiet } = require('sequelize');
-
+const { getKey } = require('../keys');
 
 const router = Router();
-
+     
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 /* var stepByStep = analyzedInstructions[0].steps.map(el => el.step) */
 
+const API_KEYA = getKey();
+
 const getRecipeApi = async function () {
 
-    let recipeApi
+    let recipeApi 
     let recipeInfo
     let recipeInfoStepByStep
     let stepByStep1
 
 
-    recipeApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=575618d2a28a4c40807b0a6a9faee8e4&addRecipeInformation=true`)
+    recipeApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`)
 
     recipeInfoStepByStep = await recipeApi.data.results.map(el => {
 
@@ -80,7 +83,11 @@ const getAllRecipes = async function () {
 
 
 
-router.get('/allOrName', async (req, res) => {
+router.get('/allOrName', async (req, res, next) => {
+
+    console.log(API_KEYA)
+    
+    try {
 
     const name = req.query.name
     let totalRecipes = await getAllRecipes();
@@ -89,10 +96,14 @@ router.get('/allOrName', async (req, res) => {
         let recipeName = await totalRecipes.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
         recipeName.length ?
             res.status(200).send(recipeName) :
-            res.status(404).send("Cant find the recipe")
+             res.status(404).send("Cant find the recipe") 
     } else {
         res.status(200).send(totalRecipes)
     }
+
+} catch (error) {
+    next(error)
+}
 
 })
 
@@ -136,9 +147,9 @@ router.get('/:id', async (req, res, next) => {    // el next esta para que luego
                     },
                 }
             })  
-
+ 
         } else {
-            response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=575618d2a28a4c40807b0a6a9faee8e4`)
+            response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEYA}`)
             recipeApi = response.data
 
                 if (recipeApi.analyzedInstructions[0] !== undefined) {
@@ -172,10 +183,10 @@ router.post('/addRecipe', async (req, res, next) => {    // el next esta para qu
 
         function toUpperCasefunc(arg) {
             var b = arg[0].toUpperCase() + arg.substring(1)
-            return b
+            return b 
         }
         name = toUpperCasefunc(name)
-
+ 
         let newRecipe = await Recipe.create({
             name,
             dishSummary,

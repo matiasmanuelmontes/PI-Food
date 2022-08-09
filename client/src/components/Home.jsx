@@ -15,7 +15,7 @@ export default function Home() {
 
     // Aqui comienza lo de paginado
     const [currentPage, setCurrentPage] = useState(1)
-    const [recipePerPage, setRecipePerPage] = useState(4)
+    const [recipePerPage, setRecipePerPage] = useState(9)
     const indexOfLastRecipe = currentPage * recipePerPage // 4
     const indexOfFirstRecipe = indexOfLastRecipe - recipePerPage // 0
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe) // 0 al 3
