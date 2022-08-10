@@ -72,7 +72,7 @@ export default function AddRecipe() {
             diets: [],
         })
 
-        history.push('/home')
+        history.push('/recipes')
 
     }
 
@@ -89,7 +89,7 @@ export default function AddRecipe() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = "http://localhost:3000/home";
+        window.location.href = "http://localhost:3000/recipes";
     }
 
     console.log(input)

@@ -24,7 +24,7 @@ export default function SearchBar() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = "http://localhost:3000/home";
+        window.location.href = "http://localhost:3000/recipes/";
     }
 
     function redirectAddRecipe(event) {

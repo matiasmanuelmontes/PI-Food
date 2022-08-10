@@ -1,6 +1,6 @@
 
 function getKey () {
-return  API_KEY4;
+return  API_KEY2;
 }
 
 module.exports = {getKey};

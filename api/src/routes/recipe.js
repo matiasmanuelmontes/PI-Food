@@ -83,7 +83,7 @@ const getAllRecipes = async function () {
 
 
 
-router.get('/allOrName', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 
     console.log(API_KEYA)
     
@@ -177,7 +177,7 @@ router.get('/:id', async (req, res, next) => {    // el next esta para que luego
     }
 })
 
-router.post('/addRecipe', async (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
+router.post('/', async (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
     try {
         var { name, dishSummary, healthScore, stepByStep, image, createdInDb, diets } = req.body;
 

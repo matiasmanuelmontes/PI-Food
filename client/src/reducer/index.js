@@ -119,8 +119,18 @@ export default function reducer(state = initialState, action) {
 
      case 'FILTER_BY_DIET' :
 
-      const allRecipes = state.recipes
+      var allRecipes = state.recipes
 
+      for (let n = 0; n < allRecipes.length; n++){
+        for ( let m = 0; m < allRecipes[n].diets.length; m++){
+          if (typeof allRecipes[n].diets[m] === 'object'){
+            allRecipes[n].diets[m] =  allRecipes[n].diets[m].name
+            } 
+          } 
+        }
+
+        /* console.log (allRecipes) */
+      
       const dietFiltered = action.payload === 'ALL' ? allRecipes :
         allRecipes.filter(el => el.diets.includes(action.payload))
 

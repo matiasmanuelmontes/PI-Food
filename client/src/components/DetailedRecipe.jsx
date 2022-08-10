@@ -33,7 +33,7 @@ export default function RecipeDetail(props) {
 
     return (
         <div>
-            <Link to='/home'>
+            <Link to='/recipes/'>
                 <button>Home</button>
             </Link>
             {
@@ -44,7 +44,7 @@ export default function RecipeDetail(props) {
                         <h2>Dish Summary {myNewRecipe.dishSummary}</h2>
                         <p>Healt Score {myNewRecipe.healthScore}</p>
                         <h3>Step By Step {myNewRecipe.stepByStep + ' ' || myNewRecipe.stepByStep.map(el => el + (' '))}</h3>
-                        <h4>Diets {!myNewRecipe.createdInDb ? myNewRecipe.diets + ' ' : myNewRecipe.diets.map(el => el.name + (' '))}</h4 >
+                        <h4>Diets {!myNewRecipe.createdInDb ? myNewRecipe.diets + ' ,' : myNewRecipe.diets.map(el => el.name + (' '))}</h4 >
                     </div> : <p>Loading..</p>
             }
         </div>

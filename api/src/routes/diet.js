@@ -15,7 +15,7 @@ const API_KEYA = getKey();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.get('/allDiets', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 
      const dietApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`) 
     

@@ -11,7 +11,9 @@ export default function RecipeCard({ name, image, diets, healthScore }) {
             dietsName.push(el.name + ", ")
         })
     } else {
-        dietsName = diets
+        diets.map((el) => {
+            dietsName.push(el + ", ")
+        })
     }
 
     return (<div>

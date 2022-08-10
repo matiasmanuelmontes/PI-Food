@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getRecipes(){
     return function(dispatch){
-        axios.get('http://localhost:3001/api/recipes/allOrName')
+        axios.get('http://localhost:3001/api/recipes/')
         .then((recipes) => {
             dispatch({
                 type: 'GET_RECIPES',
@@ -17,7 +17,7 @@ export function getRecipes(){
 
  export function searchRecipe(search){
     return function(dispatch){
-        axios.get(`http://localhost:3001/api/recipes/allOrName?name=${search}`)
+        axios.get(`http://localhost:3001/api/recipes?name=${search}`)
         .then((recipe) => {
             dispatch({
                 type: 'SEARCH_RECIPE',
@@ -53,7 +53,7 @@ export function filterRecipeByDiet(payload){
 
  export function getDiets(){
     return function(dispatch){
-        axios.get('http://localhost:3001/api/diets/allDiets')
+        axios.get('http://localhost:3001/api/diets/')
         .then((diets) => {
             dispatch({
                 type: 'GET_DIETS',
@@ -68,7 +68,7 @@ export function filterRecipeByDiet(payload){
 
 export function postRecipe(payload){
     return async function(dispatch){
-       const response = axios.post('http://localhost:3001/api/recipes/addRecipe', payload)
+       const response = axios.post('http://localhost:3001/api/recipes/', payload)
         console.log(response)
         return response;
         

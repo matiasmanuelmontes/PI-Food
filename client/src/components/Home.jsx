@@ -12,7 +12,7 @@ export default function Home() {
 
     let recipes = useSelector((state) => state.filteredRecipes)
     let dispatch = useDispatch()
-
+    
     // Aqui comienza lo de paginado
     const [currentPage, setCurrentPage] = useState(1)
     const [recipePerPage, setRecipePerPage] = useState(9)
@@ -20,7 +20,7 @@ export default function Home() {
     const indexOfFirstRecipe = indexOfLastRecipe - recipePerPage // 0
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe) // 0 al 3
 
-    const paginated = (pageNumber) => {
+    const paginated = ( pageNumber ) => {
         setCurrentPage(pageNumber)
     } // aqui finaliza lo de paginado y se agrega al div
 
@@ -48,11 +48,13 @@ export default function Home() {
         dispatch(getRecipes());
     }
 
+    const dietsAll = useSelector((state) => state.diets)
+
     return (
         <div>
             <SearchBar />
             {/* <Link to='/recipes'> All Recipes</Link> */}
-            <h1>hi</h1>
+            <h1>Recipes Finder</h1>
             <button onClick={e => { handleOnClick(e) }}>
                 Reset
             </button>
@@ -66,10 +68,14 @@ export default function Home() {
                     <option value='HEALTH_SCORE_DESCENDENT'>Health Score Descendent</option>
                 </select>
                 <select name="selectFiler" onChange={e => onSelectChangeFilterDiet(e)}>
-                    <option value='ALL'>All</option>
+                    {/* <option value='ALL'>All</option>
                     <option value='lacto ovo vegetarian'>Vegetarian</option>
                     <option value='vegan'>Vegan</option>
-                    <option value='gluten free'>Gluten Free</option>
+                    <option value='gluten free'>Gluten Free</option> */}
+                    <option value='ALL'>All</option>
+                    {dietsAll && dietsAll.map((diet) => (
+                        <option value={diet.name}>{diet.name}</option>
+                    ))}
                 </select>
 
                 <Paginated
@@ -81,7 +87,7 @@ export default function Home() {
 
                     return (
                         <div>
-                            <Link to={'/home/' + element.id}>
+                            <Link to={'/recipes/' + element.id}>
                                 <RecipeCard
                                     id={element.id}
                                     name={element.name}
