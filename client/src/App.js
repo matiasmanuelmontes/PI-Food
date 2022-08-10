@@ -9,10 +9,12 @@ import React, {useEffect} from 'react';
 import RecipeDetail from './components/DetailedRecipe';
 
 function App() {
+  
     const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getDiets());
 }, []);   
+
   return (
     <BrowserRouter>
     <div className="App">
@@ -22,7 +24,6 @@ function App() {
       <Route exact path='/recipes/AddRecipe' component={AddRecipe}/>
        <Route exact path='/home/:id' component={RecipeDetail}/> 
       </Switch>
-      
     </div>
     </BrowserRouter>
   );

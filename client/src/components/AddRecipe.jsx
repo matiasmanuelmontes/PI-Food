@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
 import '../styledComponents/addRecipe.css';
 
-function validate (input){
-    let errors ={};
-    if(!input.name){
+function validate(input) {
+    let errors = {};
+    if (!input.name) {
         errors.name = 'Write a name please'
-    } else if (!input.dishSummary){
+    } else if (!input.dishSummary) {
         errors.dishSummary = 'Write a dishSummary please'
-    } 
+    }
     return errors;
-}  
+}
 
 export default function AddRecipe() {
 
@@ -72,9 +71,9 @@ export default function AddRecipe() {
             stepByStep: "",
             diets: [],
         })
-            
+
         history.push('/home')
-          
+
     }
 
     function handleDelete(element) {
@@ -105,8 +104,8 @@ export default function AddRecipe() {
                     <label htmlFor="">Name: </label>
                     <input onChange={onInputChange} name="name" type="text" value={input.name} />
                     {errors.name && (
-                        <p  classname="error" >{errors.name}</p>
-                    )} 
+                        <p classname="error" >{errors.name}</p>
+                    )}
                 </div>
                 <div>
                     <label htmlFor="">Image: </label>
@@ -116,7 +115,7 @@ export default function AddRecipe() {
                     <label htmlFor="">DishSummary: </label>
                     <input onChange={onInputChange} name="dishSummary" type="text" value={input.dishSummary} />
                     {errors.dishSummary && (
-                        <p  classname='error' >{errors.dishSummary}</p>
+                        <p classname='error' >{errors.dishSummary}</p>
                     )}
                 </div>
                 <div>
@@ -140,15 +139,15 @@ export default function AddRecipe() {
                     ))}
                 </select>
                 {/* <ul><li>{input.diets.map(el => el + ", ")}</li></ul> */}
-                        <button type='submit'>Create Recipe</button>
+                <button type='submit'>Create Recipe</button>
             </form>
 
-            {input.diets.map(diet => 
-                        <div >
-                            <p>{diet}</p>
-                        <button onClick={()=> handleDelete(diet)}>x</button>
-                        </div>
-                        )}
+            {input.diets.map(diet =>
+                <div >
+                    <p>{diet}</p>
+                    <button onClick={() => handleDelete(diet)}>x</button>
+                </div>
+            )}
         </div>
     )
 }

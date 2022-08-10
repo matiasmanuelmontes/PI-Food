@@ -50,8 +50,8 @@ export default function Home() {
 
     return (
         <div>
-            <SearchBar/>
-            <Link to='/recipes'> All Recipes</Link>
+            <SearchBar />
+            {/* <Link to='/recipes'> All Recipes</Link> */}
             <h1>hi</h1>
             <button onClick={e => { handleOnClick(e) }}>
                 Reset
