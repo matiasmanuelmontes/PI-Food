@@ -1,12 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getRecipeDetail } from "../actions";
+/* import { useDispatch, useSelector } from "react-redux"; */
+/* import { getRecipeDetail } from "../actions"; */
 import '../styledComponents/paginated.css';
-import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+
 
 export default function RecipeDetail(/* props */) {
 
@@ -27,6 +26,8 @@ export default function RecipeDetail(/* props */) {
     useEffect(() => {
         axios.get(`http://localhost:3001/api/recipes/${id}`)
             .then((response) => {  // este response es videogame
+                response.data.length > 0 ?
+                setMyRecipe(response.data[0]):
                 setMyRecipe(response.data)
             })
         return () => {
@@ -38,18 +39,10 @@ export default function RecipeDetail(/* props */) {
     console.log(myRecipe)
 
     var myNewRecipe = {}
-    
-    /* if (myRecipe.length > 0) {
-        myNewRecipe = myRecipe[0]
-    } else {
-        myNewRecipe = myRecipe
-    } */
+     myNewRecipe = myRecipe
 
-    /* var dietsA = myNewRecipe.diets */
 
-    myNewRecipe = myRecipe
-
-    function dietFilterDb(arg) {
+ /*    function dietFilterDb(arg) {
         let filteredDietsDb = []
         arg.map((element1) => { filteredDietsDb.push(element1.name)})
         return filteredDietsDb
@@ -59,15 +52,12 @@ export default function RecipeDetail(/* props */) {
         let filteredDiets = []
         arg.map((element2) => { filteredDiets.push(element2 + " - ")})
         return filteredDiets
-    }
-
+    } */
 
     console.log('myNewRecipe')
     console.log(myNewRecipe)
 
-    /* console.log('dietsA')
-    console.log(dietsA) */
- 
+    
     return (
         <div>
             <Link to='/recipes/'>
@@ -80,7 +70,8 @@ export default function RecipeDetail(/* props */) {
                         <img src={myNewRecipe.image} alt="image" />
                         <h2>Dish Summary {myNewRecipe.dishSummary}</h2>
                         <p>Healt Score {myNewRecipe.healthScore}</p>
-                        <h3>Step By Step: {!myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</h3>  
+                        <h3>Step By Step: {myNewRecipe.stepByStep}</h3>
+                        {/*  <h3>Step By Step: {!myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</h3>  */}  
                         {/* <ul  className="listDetail" >Diets {!myNewRecipe.createdInDb ? myNewRecipe.diets : myNewRecipe.diets.map(el => el.name + (', '))}</ul >  */}
                          {/* <ul  className="listDetail" >Diets {!myNewRecipe.createdInDb ? dietFilter(myNewRecipe.diets) : dietFilterDb(myNewRecipe.diets)}</ul > */}  
                          <ul  className="listDetail" >Diets: {!myNewRecipe.createdInDb ? 
@@ -94,7 +85,7 @@ export default function RecipeDetail(/* props */) {
                             <a   className="eachA" >{elem.name}</a>
                             </li>))
                             }
-                        </ul > 
+                        </ul >  
                         
 
                     </div> : <p>Loading..</p>
