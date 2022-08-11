@@ -22,7 +22,7 @@ function App() {
       <Route exact path='/' component={LandingPage}/>
       <Route exact path='/recipes' component={Home}/>
       <Route exact path='/recipes/AddRecipe' component={AddRecipe}/>
-       <Route exact path='/recipes/:id' component={RecipeDetail}/> 
+      <Route exact path='/recipes/:id' component={RecipeDetail}/> 
       </Switch>
     </div>
     </BrowserRouter>

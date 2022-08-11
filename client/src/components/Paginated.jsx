@@ -1,5 +1,5 @@
 import React from "react";
-import '../styledComponents/paginated.css';
+import '../styledComponents/detailedRecipe.css';
 
 export default function Paginated({ recipePerPage, recipes, paginated }) {
     const pageNumbers = []

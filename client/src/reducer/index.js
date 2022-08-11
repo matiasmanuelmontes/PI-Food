@@ -152,11 +152,11 @@ export default function reducer(state = initialState, action) {
         diets: action.payload
       } 
 
-      case 'GET_RECIPE_DETAIL':
+      /* case 'GET_RECIPE_DETAIL':
       return {
         ...state,
         detail: action.payload,
-      }
+      } */
       
     default:
       return state

@@ -17,6 +17,7 @@ const API_KEYA = getKey();
 
 router.get('/', async (req, res, next) => {
 
+    try {
      const dietApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`) 
     
     /* vegetarian, vegan, glutenFree  */
@@ -39,6 +40,10 @@ router.get('/', async (req, res, next) => {
             /* console.log("allDiets")  */
              /* console.log(allDiets)   */ 
              res.send(allDiets) 
+
+            } catch (error) {
+                next(error)
+            }
      });
 
     /*  router.post('/allDiets/add', (req, res, next) => {    // el next esta para que luego se vaya al siguiente middleware, que es el control de errores que esta en app
