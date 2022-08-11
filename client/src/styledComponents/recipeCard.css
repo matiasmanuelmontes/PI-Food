@@ -1,4 +1,54 @@
-.imgVid {
+.homeTitleDetail {
+    
+    
+    grid-auto-columns:auto;
+    grid-gap: 10px;
+    background-color: rgb(2, 185, 72);
+    width: 40vw;
+    margin-left : 30vw;
+    position:relative;
+    box-sizing: border-box;
+    margin-top: 10px;
+      border:1px solid black;
+      padding: 10px ;
+      border-radius: 15px;
+  }
+
+  .homeHealthScoreDetail {
+    
+    
+    grid-auto-columns:auto;
+    grid-gap: 10px;
+    background-color: white;
+    width: 20vw;
+    margin-left : 40vw;
+    position:relative;
+    box-sizing: border-box;
+    margin-top: 10px;
+      border:1px solid black;
+      padding: 10px ;
+      border-radius: 15px;
+  }
+
+  .homeDietsDetail {
+    
+    
+    grid-auto-columns:auto;
+    grid-gap: 10px;
+    background-color: white;
+    width: 40vw;
+    margin-left : 30vw;
+    position:relative;
+    box-sizing: border-box;
+    margin-top: 10px;
+      border:1px solid black;
+      padding: 10px ;
+      border-radius: 15px;
+  }
+
+  
+
+.imgRecipe {
     
     width: 400px;
     height: 250px;

@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 /* import { useDispatch, useSelector } from "react-redux"; */
 /* import { getRecipeDetail } from "../actions"; */
-import '../styledComponents/paginated.css';
+import '../styledComponents/detailedRecipe.css';
 import axios from "axios";
 
 
@@ -40,8 +40,7 @@ export default function RecipeDetail(/* props */) {
 
     var myNewRecipe = {}
      myNewRecipe = myRecipe
-
-
+     
  /*    function dietFilterDb(arg) {
         let filteredDietsDb = []
         arg.map((element1) => { filteredDietsDb.push(element1.name)})
@@ -61,28 +60,28 @@ export default function RecipeDetail(/* props */) {
     return (
         <div>
             <Link to='/recipes/'>
-                <button>Home</button>
+                <button className="searchHomeButton">Home</button>
             </Link>
             {
                 myNewRecipe ?
                     <div>
-                        <h1>I am {myNewRecipe.name}</h1>
-                        <img src={myNewRecipe.image} alt="image" />
-                        <h2>Dish Summary {myNewRecipe.dishSummary}</h2>
-                        <p>Healt Score {myNewRecipe.healthScore}</p>
-                        <h3>Step By Step: {myNewRecipe.stepByStep}</h3>
-                        {/*  <h3>Step By Step: {!myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</h3>  */}  
+                        <h1 className="titleDetail">{myNewRecipe.name}</h1>
+                        <img src={myNewRecipe.image} alt="image" className="imgDet" />
+                        <p className="titleDetail">Dish Summary: {myNewRecipe.dishSummary}</p>
+                        <p className="healthScoreDetail">Healt Score: {myNewRecipe.healthScore}</p>
+                        {/* <h3>Step By Step: {myNewRecipe.stepByStep}</h3> */}
+                          <p className="titleDetail">Step By Step: {myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</p>    
                         {/* <ul  className="listDetail" >Diets {!myNewRecipe.createdInDb ? myNewRecipe.diets : myNewRecipe.diets.map(el => el.name + (', '))}</ul >  */}
                          {/* <ul  className="listDetail" >Diets {!myNewRecipe.createdInDb ? dietFilter(myNewRecipe.diets) : dietFilterDb(myNewRecipe.diets)}</ul > */}  
                          <ul  className="listDetail" >Diets: {!myNewRecipe.createdInDb ? 
                         myNewRecipe.diets.map(elem => ( 
-                        <li  className="number"   key={elem} >
-                        <a   className="eachA" >{elem}</a>
+                        <li  className="dietItem"   key={elem} >
+                        <a   className="eachTagA" >{elem}</a>
                         </li>
                         )):
                         myNewRecipe.diets.map(elem => ( 
-                            <li  className="number"   key={elem.name} >
-                            <a   className="eachA" >{elem.name}</a>
+                            <li  className="dietItem"   key={elem.name} >
+                            <a   className="eachTagA" >{elem.name}</a>
                             </li>))
                             }
                         </ul >  

@@ -24,4 +24,11 @@
     cursor:alias;
    } 
 
-
+   .paginatedPages {
+    width: 4vw;
+    margin-left: 48vw;
+    border: 1px solid;
+    padding: 10px ;
+    border-radius: 5px;
+    background-color: grey;
+}

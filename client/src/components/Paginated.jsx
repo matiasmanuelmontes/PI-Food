@@ -1,5 +1,5 @@
 import React from "react";
-import '../styledComponents/detailedRecipe.css';
+import '../styledComponents/paginated.css';
 
 export default function Paginated({ recipePerPage, recipes, paginated }) {
     const pageNumbers = []
@@ -10,7 +10,7 @@ export default function Paginated({ recipePerPage, recipes, paginated }) {
 
     return (
         <nav>
-            <h3>Pages</h3>
+            <h5 className="paginatedPages">Pages</h5>
             <ul  className="paginated">
                 {pageNumbers && pageNumbers.map(number => (
                     <li  className="number"  key={number}>

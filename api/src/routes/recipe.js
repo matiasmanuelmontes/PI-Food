@@ -31,7 +31,7 @@ const getRecipeApi = async function () {
         if (el.analyzedInstructions[0] !== undefined) {
             stepByStep1 = el.analyzedInstructions[0].steps.map(elem => elem.step)
         } else {
-            stepByStep1 = "There is no stepByStep"
+            stepByStep1 = ["There is no stepByStep"]
         }
         return stepByStep1
     })
@@ -41,7 +41,7 @@ const getRecipeApi = async function () {
         return {
             id: el.id,
             name: el.title,
-            dishSummary: el.summary,
+            dishSummary: el.summary.replace(/<[^>]+>/g,""), // regex utilizado para eliminar tags en la descripcion
             healthScore: el.healthScore,
             // la propiedad stepByStep se incorpora a continuacion
             image: el.image,
@@ -155,13 +155,13 @@ router.get('/:id', async (req, res, next) => {    // el next esta para que luego
                 if (recipeApi.analyzedInstructions[0] !== undefined) {
                     recipeInfoStepByStep  = recipeApi.analyzedInstructions[0].steps.map(elem => elem.step)
                 } else {
-                    recipeInfoStepByStep = "There is no stepByStep"
+                    recipeInfoStepByStep = ["There is no stepByStep"]
                 }
                
             recipe =  {
                     id: recipeApi.id,
                     name: recipeApi.title,
-                    dishSummary: recipeApi.summary,
+                    dishSummary: recipeApi.summary.replace(/<[^>]+>/g,""),
                     healthScore: recipeApi.healthScore,
                     stepByStep : recipeInfoStepByStep,
                     image: recipeApi.image,

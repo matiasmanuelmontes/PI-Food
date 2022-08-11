@@ -98,7 +98,7 @@ export default function AddRecipe() {
 
         <div>
             <button name="redirectHome" class="home" onClick={redirectHome}>Home</button>
-            <h1>Create your Recipe</h1>
+            <h1 className="addTitlePincipal">Create your Recipe</h1>
             <form onSubmit={(e) => onSubmit(e)} class="addRecipeForm" >
                 <div>
                     <label htmlFor="">Name: </label>
@@ -133,18 +133,18 @@ export default function AddRecipe() {
                     <label><input onChange={(e) => onCheckboxChange(e)} name="shooter" type="checkbox" value="Shooter" />Shooter</label>
                     <label><input onChange={(e) => onCheckboxChange(e)} name="indie" type="checkbox" value="Indie" />Indie</label>
                 </div> */}
-                <select name="selectDiet" onChange={(e) => onSelectChange(e)}>
+                <select className="addSelectButton" name="selectDiet" onChange={(e) => onSelectChange(e)}>
                     {diets && diets.map((diet) => (
                         <option value={diet.name}>{diet.name}</option>
                     ))}
                 </select>
                 {/* <ul><li>{input.diets.map(el => el + ", ")}</li></ul> */}
-                <button type='submit'>Create Recipe</button>
+                <button type='submit' className="addCreateButton">Create Recipe</button>
             </form>
 
             {input.diets.map(diet =>
                 <div >
-                    <p>{diet}</p>
+                    <p className="addChoseDiet">{diet}</p>
                     <button onClick={() => handleDelete(diet)}>x</button>
                 </div>
             )}

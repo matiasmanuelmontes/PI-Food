@@ -7,6 +7,7 @@ import RecipeCard from './RecipeCard';
 import Paginated from "./Paginated";
 import { filterRecipeByDiet, sort, sortHealthScore } from "../actions";
 import SearchBar from "./SearchbBar";
+import '../styledComponents/home.css';
 
 export default function Home() {
 
@@ -54,7 +55,7 @@ export default function Home() {
         <div>
             <SearchBar />
             {/* <Link to='/recipes'> All Recipes</Link> */}
-            <h1>Recipes Finder</h1>
+            <h1 className="homeTitlePincipal">Recipes Finder</h1>
             <button onClick={e => { handleOnClick(e) }}>
                 Reset
             </button>

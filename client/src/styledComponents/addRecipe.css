@@ -31,3 +31,53 @@
   background-color: red;
 
 } */
+
+.addTitlePincipal {
+    
+  grid-auto-columns:auto;
+  grid-gap: 10px;
+  background-color: grey;
+  width: 40vw;
+  margin-left : 30vw;
+  position:relative;
+  box-sizing: border-box;
+  margin-top: 10px;
+    border:1px solid black;
+    padding: 10px ;
+    border-radius: 15px;
+}
+
+.addCreateButton {
+  margin-top: 10px;
+  border-top: 1px solid;
+  padding: 10px ;
+  border-radius: 5px;
+}
+
+.addCreateButton:hover {
+  background-color: white;
+  color: black;
+  cursor:alias;
+ } 
+
+.addSelectButton {
+  margin-top: 10px;
+  border-top: 1px solid;
+  padding: 10px ;
+  border-radius: 5px;
+}
+
+.addChoseDiet {
+    
+  grid-auto-columns:auto;
+  grid-gap: 10px;
+  background-color: grey;
+  width: 10vw;
+  margin-left : 45vw;
+  position:relative;
+  box-sizing: border-box;
+  margin-top: 10px;
+    border:1px solid black;
+    padding: 10px ;
+    border-radius: 15px;
+}

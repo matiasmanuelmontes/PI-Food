@@ -1,0 +1,18 @@
+.homeTitlePincipal {
+    
+    
+    grid-auto-columns:auto;
+    grid-gap: 10px;
+    background-color: grey;
+    width: 40vw;
+    margin-left : 30vw;
+    position:relative;
+    box-sizing: border-box;
+    margin-top: 10px;
+      border:1px solid black;
+      padding: 10px ;
+      border-radius: 15px;
+  }
+
+
+  

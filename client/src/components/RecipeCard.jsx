@@ -16,12 +16,12 @@ export default function RecipeCard({ name, image, diets, healthScore }) {
         })
     }
 
-    return (<div>
+    return (<div /* className='homeDietsDetail' */>
 
-        <h3>{name}</h3>
-        <h4>{healthScore}</h4>
-        <h5>{dietsName}</h5>
-        <img src={image} alt="imagen" class="imgVid" />
+        <h3 className='homeTitleDetail'>{name}</h3>
+        <p className='homeHealthScoreDetail'>Health Score: {healthScore}</p>
+        <p className='homeDietsDetail'>Diets: {dietsName}</p>
+        <img src={image} alt="imagen" class="imgRecipe" />
 
     </div>)
 }
