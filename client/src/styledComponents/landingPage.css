@@ -4,10 +4,11 @@
     grid-auto-columns:auto;
     grid-gap: 10px;
     background-color: grey;
-    margin-top: 200px;
+    margin-top: 0px;
+    align-items: center;
     width: 60vw;
     margin-left : 20vw;
-    position:relative;
+    position:inherit;
     box-sizing: border-box;
     
       border:1px solid black;
@@ -19,6 +20,27 @@
   
     border-top: 1px solid;
     padding: 10px ;
+    margin-top: 10px;
     border-radius: 5px;
-  
+    height: 50px;
+    width: 100px;
+    font-size: large;
+}
+
+.landingBackGround{
+  background: url('https://static01.nyt.com/images/2016/08/11/well/well_nutritionforrunners_gif/well_nutritionforrunners_gif-jumbo-v5.gif') no-repeat center center fixed;
+ 
+  position:relative;
+   min-width: 400px; 
+	min-height: 1000px;
+	margin: 0;
+	padding: 0;
+	
+	-khtml-background-size:cover;  /*  Konqueror */
+	-webkit-background-size:cover; /* Webkit */
+	-moz-background-size:cover;  /* Firefox */
+	-o-background-size:cover;  /*  Opera */
+	background-size:cover; /* Resto */
+
+ 
 }

@@ -52,14 +52,14 @@ export default function Home() {
     const dietsAll = useSelector((state) => state.diets)
 
     return (
-        <div>
+        <div className="homeBackGround">
             <SearchBar />
             {/* <Link to='/recipes'> All Recipes</Link> */}
             <h1 className="homeTitlePincipal">Recipes Finder</h1>
             <button onClick={e => { handleOnClick(e) }}>
                 Reset
             </button>
-            <div>
+            <div className="homeSelects">
                 <select name="selectOrder" onChange={onSelectChangeOrder}>
                     <option value='ORDER_A-Z'>Order A-Z</option>
                     <option value='ORDER_Z-A'>Order Z-A</option>
@@ -78,6 +78,8 @@ export default function Home() {
                         <option value={diet.name}>{diet.name}</option>
                     ))}
                 </select>
+                </div>
+                <div>
 
                 <Paginated
                     recipePerPage={recipePerPage}

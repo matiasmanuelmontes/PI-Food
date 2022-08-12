@@ -96,7 +96,7 @@ export default function AddRecipe() {
 
     return (
 
-        <div>
+        <div className="addBackGround">
             <button name="redirectHome" class="home" onClick={redirectHome}>Home</button>
             <h1 className="addTitlePincipal">Create your Recipe</h1>
             <form onSubmit={(e) => onSubmit(e)} class="addRecipeForm" >

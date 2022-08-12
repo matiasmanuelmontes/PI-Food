@@ -12,25 +12,7 @@
     padding: 10px ;
     border-radius: 15px;
     
- /*  position:relative;
-  width  : 800px;
-  height : 600px;
-  margin : 0 auto;
-  padding: 10px;
-  box-sizing: border-box;
-  
-
-   display  :inline-table;
-  grid-gap : 20px;
-  grid-template-columns :  repeat(2, 1fr) ;
-  grid-template-rows    : 30px ;  */
 } 
-
-/* .error{
-  color: red;
-  background-color: red;
-
-} */
 
 .addTitlePincipal {
     
@@ -81,3 +63,21 @@
     padding: 10px ;
     border-radius: 15px;
 }
+
+.addBackGround{
+    
+  background: url('https://eqd66354g6k.exactdn.com/wp-content/uploads/2021/11/int_thermomix_cookidoo_CR_notebook_landscape_medium.jpg?strip=all&lossy=1&ssl=1') no-repeat center center fixed;
+
+position:relative;
+ min-width: 400px; 
+min-height: 1000px;
+margin: 0;
+padding: 0;
+
+-khtml-background-size:cover;  /*  Konqueror */
+-webkit-background-size:cover; /* Webkit */
+-moz-background-size:cover;  /* Firefox */
+-o-background-size:cover;  /*  Opera */
+background-size:cover; /* Resto */
+}
+

@@ -58,7 +58,7 @@ export default function RecipeDetail(/* props */) {
 
     
     return (
-        <div>
+        <div className="detailBackGround">
             <Link to='/recipes/'>
                 <button className="searchHomeButton">Home</button>
             </Link>

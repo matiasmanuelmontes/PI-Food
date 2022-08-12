@@ -83,3 +83,21 @@
   margin-right: 10px;
 }
 
+.detailBackGround{
+    
+
+  background: url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/food-1-1584398015.jpg?crop=1.00xw:1.00xh;0,0&resize=10000:*') no-repeat center center fixed;
+
+position:relative;
+ min-width: 400px; 
+min-height: 1000px;
+margin: 0;
+padding: 0;
+
+-khtml-background-size:cover;  /*  Konqueror */
+-webkit-background-size:cover; /* Webkit */
+-moz-background-size:cover;  /* Firefox */
+-o-background-size:cover;  /*  Opera */
+background-size:cover; /* Resto */
+}
+

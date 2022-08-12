@@ -3,9 +3,23 @@
     
     grid-auto-columns:auto;
     grid-gap: 10px;
-    background-color: grey;
+    background-color: rgb(2, 185, 72);
     width: 40vw;
     margin-left : 30vw;
+    position:relative;
+    box-sizing: border-box;
+    margin-top: 10px;
+      border:1px solid black;
+      padding: 10px ;
+      border-radius: 15px;
+  }
+
+  .homeSelects{
+    grid-auto-columns:auto;
+    grid-gap: 10px;
+    background-color: grey;
+    width: 34vw;
+    margin-left : 33vw;
     position:relative;
     box-sizing: border-box;
     margin-top: 10px;
@@ -26,6 +40,25 @@
   border-radius: 10px;
  
       background-color: grey;
+      border:1px solid black;
+  }
+
+  .homeBackGround{
+    
+
+    background: url('https://i.pinimg.com/originals/cc/53/18/cc5318af171935951419fce26d040e82.jpg') no-repeat center center fixed;
+ 
+  position:relative;
+   min-width: 400px; 
+	min-height: 1000px;
+	margin: 0;
+	padding: 0;
+	
+	-khtml-background-size:cover;  /*  Konqueror */
+	-webkit-background-size:cover; /* Webkit */
+	-moz-background-size:cover;  /* Firefox */
+	-o-background-size:cover;  /*  Opera */
+	background-size:cover; /* Resto */
   }
 
 
