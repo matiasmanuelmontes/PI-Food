@@ -87,7 +87,7 @@ export default function Home() {
                 {currentRecipes && currentRecipes.map((element) => {
 
                     return (
-                        <div>
+                        <div  className="homeCardGrid" >
                             <Link to={'/recipes/' + element.id}>
                                 <RecipeCard
                                     id={element.id}
