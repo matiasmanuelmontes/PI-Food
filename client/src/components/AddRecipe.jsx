@@ -102,7 +102,7 @@ export default function AddRecipe() {
             <form onSubmit={(e) => onSubmit(e)} class="addRecipeForm" >
                 <div>
                     <label htmlFor="">Name: </label>
-                    <input onChange={onInputChange} name="name" type="text" value={input.name} />
+                    <input onChange={onInputChange} name="name" type="text" value={input.name} className="addInput" />
                     {errors.name && (
                         <p classname="error" >{errors.name}</p>
                     )}

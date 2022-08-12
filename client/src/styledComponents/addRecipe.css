@@ -64,6 +64,10 @@
     border-radius: 15px;
 }
 
+.addInput{
+  size: 200px;
+}
+
 .addBackGround{
     
   background: url('https://eqd66354g6k.exactdn.com/wp-content/uploads/2021/11/int_thermomix_cookidoo_CR_notebook_landscape_medium.jpg?strip=all&lossy=1&ssl=1') no-repeat center center fixed;

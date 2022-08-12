@@ -17,7 +17,7 @@
   }
 
 .landingHomeButton{
-  
+    background-color: rgb(2, 185, 72);
     border-top: 1px solid;
     padding: 10px ;
     margin-top: 10px;
@@ -26,6 +26,12 @@
     width: 100px;
     font-size: large;
 }
+
+.landingHomeButton:hover {
+  background-color: white;
+  color: black;
+  cursor:alias;
+ } 
 
 .landingBackGround{
   background: url('https://static01.nyt.com/images/2016/08/11/well/well_nutritionforrunners_gif/well_nutritionforrunners_gif-jumbo-v5.gif') no-repeat center center fixed;

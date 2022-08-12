@@ -105,3 +105,6 @@ dist
 
 # package-lock.json
 package-lock.json
+
+# keys variables file / api multiple keys
+keys.js
