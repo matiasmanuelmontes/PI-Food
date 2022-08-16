@@ -8,10 +8,18 @@ function validate(input) {
     let errors = {};
     if (!input.name) {
         errors.name = 'Write a name please'
-    } else if (!input.dishSummary) {
+    } 
+    else if (input.name.length > 60){
+    errors.name = '*must contain less than 60 characters'
+    }  
+    else if (!input.dishSummary) {
         errors.dishSummary = 'Write a dishSummary please'
     }
+     else if (input.dishSummary.length > 400){
+        errors.dishSummary = '*must not exceed 400 characters'
+      }    
     return errors;
+    
 }
 
 export default function AddRecipe() {
@@ -42,14 +50,14 @@ export default function AddRecipe() {
         }));
     }
 
-    function onCheckboxChange(e) {
+    /* function onCheckboxChange(e) {
         if (e.target.checked) {
             setInput({
                 ...input,
                 diets: [...input.diets, e.target.value]
             })
         }
-    }
+    } */
 
     function onSelectChange(e) {
         setInput({
@@ -102,29 +110,29 @@ export default function AddRecipe() {
             <form onSubmit={(e) => onSubmit(e)} class="addRecipeForm" >
                 <div>
                     <label htmlFor="">Name: </label>
-                    <input onChange={onInputChange} name="name" type="text" value={input.name} className="addInput" />
+                    <input onChange={onInputChange} name="name" type="text" value={input.name} className="addInput" placeholder="Insert a name" />
                     {errors.name && (
                         <p classname="error" >{errors.name}</p>
                     )}
                 </div>
                 <div>
                     <label htmlFor="">Image: </label>
-                    <input onChange={onInputChange} name="image" type="text" value={input.image} />
+                    <input onChange={onInputChange} name="image" type="text" value={input.image} placeholder="Insert an image"/>
                 </div>
                 <div>
                     <label htmlFor="">DishSummary: </label>
-                    <input onChange={onInputChange} name="dishSummary" type="text" value={input.dishSummary} />
+                    <input onChange={onInputChange} name="dishSummary" type="text" value={input.dishSummary} placeholder="Insert a description" />
                     {errors.dishSummary && (
                         <p classname='error' >{errors.dishSummary}</p>
                     )}
                 </div>
                 <div>
                     <label htmlFor="">Health Score: </label>
-                    <input onChange={onInputChange} name="healthScore" type="text" value={input.healthScore} />
+                    <input onChange={onInputChange} name="healthScore" type="text" value={input.healthScore} placeholder="Number between 1 and 100" />
                 </div>
                 <div>
                     <label htmlFor="">Step By Step: </label>
-                    <input onChange={onInputChange} name="stepByStep" type="text" value={input.stepByStep} />
+                    <input onChange={onInputChange} name="stepByStep" type="text" value={input.stepByStep} placeholder="Insert a stepByStep"/>
                 </div>
                 {/* <div>
                     <label htmlFor="">Diets: </label>
@@ -138,7 +146,6 @@ export default function AddRecipe() {
                         <option value={diet.name}>{diet.name}</option>
                     ))}
                 </select>
-                {/* <ul><li>{input.diets.map(el => el + ", ")}</li></ul> */}
                 <button type='submit' className="addCreateButton">Create Recipe</button>
             </form>
 

@@ -61,5 +61,21 @@
 	background-size:cover; /* Resto */
   }
 
+  .homeNextPreviusPages {
+    width: 8vw;
+    /* margin-left: 45vw; */
+    border: 1px solid;
+    padding: 10px ;
+    border-radius: 5px;
+    background-color: grey;
+}
+
+.homeNextPreviusPagesDiv {
+  /* display:inline-block;  */
+  grid-template-rows: auto;
+   grid-template-columns: 1fr 1fr; 
+}
+
+
 
   

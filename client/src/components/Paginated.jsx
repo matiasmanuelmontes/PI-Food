@@ -16,6 +16,7 @@ export default function Paginated({ recipePerPage, recipes, paginated }) {
                     <li  className="number"  key={number}>
                         <a onClick={() => paginated(number)}  className="eachA" >{number}</a>
                     </li>
+                    
                 ))}
             </ul>
         </nav>

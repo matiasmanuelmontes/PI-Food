@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
-/* import { useDispatch, useSelector } from "react-redux"; */
-/* import { getRecipeDetail } from "../actions"; */
 import '../styledComponents/detailedRecipe.css';
 import axios from "axios";
 
@@ -69,10 +67,7 @@ export default function RecipeDetail(/* props */) {
                         <img src={myNewRecipe.image} alt="image" className="imgDet" />
                         <p className="titleDetail">Dish Summary: {myNewRecipe.dishSummary}</p>
                         <p className="healthScoreDetail">Healt Score: {myNewRecipe.healthScore}</p>
-                        {/* <h3>Step By Step: {myNewRecipe.stepByStep}</h3> */}
-                          <p className="titleDetail">Step By Step: {myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</p>    
-                        {/* <ul  className="listDetail" >Diets {!myNewRecipe.createdInDb ? myNewRecipe.diets : myNewRecipe.diets.map(el => el.name + (', '))}</ul >  */}
-                         {/* <ul  className="listDetail" >Diets {!myNewRecipe.createdInDb ? dietFilter(myNewRecipe.diets) : dietFilterDb(myNewRecipe.diets)}</ul > */}  
+                         <p className="titleDetail">Step By Step: {myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</p>    
                          <ul  className="listDetail" >Diets: {!myNewRecipe.createdInDb ? 
                         myNewRecipe.diets.map(elem => ( 
                         <li  className="dietItem"   key={elem} >

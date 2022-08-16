@@ -23,7 +23,22 @@ export default function Home() {
 
     const paginated = ( pageNumber ) => {
         setCurrentPage(pageNumber)
-    } // aqui finaliza lo de paginado y se agrega al div
+     }
+     
+      function handleOnClickNextPage (){
+        if ((Math.ceil(recipes.length / recipePerPage)) > (currentPage)){
+        setCurrentPage(currentPage+1)
+        }  
+     } 
+
+     function handleOnClickPreviusPage (){
+        if (1 < currentPage){
+        setCurrentPage(currentPage-1)
+        }  
+     } 
+
+    
+    // aqui finaliza lo de paginado y se agrega al div
 
     useEffect(() => {
         dispatch(getRecipes())
@@ -54,7 +69,6 @@ export default function Home() {
     return (
         <div className="homeBackGround">
             <SearchBar />
-            {/* <Link to='/recipes'> All Recipes</Link> */}
             <h1 className="homeTitlePincipal">Recipes Finder</h1>
             <button onClick={e => { handleOnClick(e) }}>
                 Reset
@@ -86,6 +100,15 @@ export default function Home() {
                     recipes={recipes.length}
                     paginated={paginated}
                 />
+                <div className="homeNextPreviusPagesDiv">
+                <button onClick={(e) => { handleOnClickPreviusPage(e) }} className="homeNextPreviusPages">
+                previus page
+               </button>
+                <button onClick={(e) => { handleOnClickNextPage(e) }} className="homeNextPreviusPages">
+                next page
+               </button>
+                </div>
+                
                 {currentRecipes && currentRecipes.map((element) => {
 
                     return (
