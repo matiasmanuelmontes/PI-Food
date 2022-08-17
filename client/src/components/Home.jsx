@@ -27,17 +27,16 @@ export default function Home() {
      
       function handleOnClickNextPage (){
         if ((Math.ceil(recipes.length / recipePerPage)) > (currentPage)){
-        setCurrentPage(currentPage+1)
+        setCurrentPage(currentPage + 1)
         }  
      } 
 
      function handleOnClickPreviusPage (){
         if (1 < currentPage){
-        setCurrentPage(currentPage-1)
+        setCurrentPage(currentPage - 1)
         }  
      } 
 
-    
     // aqui finaliza lo de paginado y se agrega al div
 
     useEffect(() => {
@@ -59,7 +58,7 @@ export default function Home() {
         dispatch(filterRecipeByDiet(e.target.value))
     }
 
-    function handleOnClick(e) {
+    function handleOnClickReset(e) {
         e.preventDefault();
         dispatch(getRecipes());
     }
@@ -70,7 +69,7 @@ export default function Home() {
         <div className="homeBackGround">
             <SearchBar />
             <h1 className="homeTitlePincipal">Recipes Finder</h1>
-            <button onClick={e => { handleOnClick(e) }}>
+            <button onClick={e => { handleOnClickReset(e) }}>
                 Reset
             </button>
             <div className="homeSelects">
@@ -100,7 +99,7 @@ export default function Home() {
                     recipes={recipes.length}
                     paginated={paginated}
                 />
-                <div className="homeNextPreviusPagesDiv">
+                <div>
                 <button onClick={(e) => { handleOnClickPreviusPage(e) }} className="homeNextPreviusPages">
                 previus page
                </button>

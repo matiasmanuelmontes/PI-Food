@@ -12,7 +12,7 @@ export default function SearchBar() {
 
     function onSubmit(event) {
         event.preventDefault();
-        dispatch(searchRecipe(search));
+        dispatch(searchRecipe(search));  
         setSearch('')
     }
 

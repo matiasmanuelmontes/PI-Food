@@ -8,17 +8,15 @@ const { Op, addDiet } = require('sequelize');
 const { getKey } = require('../keys');
 
 const router = Router();
-     
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
-/* var stepByStep = analyzedInstructions[0].steps.map(el => el.step) */
 
 const API_KEYA = getKey();
 
 const getRecipeApi = async function () {
 
-    let recipeApi 
+    let recipeApi
     let recipeInfo
     let recipeInfoStepByStep
     let stepByStep1
@@ -41,7 +39,7 @@ const getRecipeApi = async function () {
         return {
             id: el.id,
             name: el.title,
-            dishSummary: el.summary.replace(/<[^>]+>/g,""), // regex utilizado para eliminar tags en la descripcion
+            dishSummary: el.summary.replace(/<[^>]+>/g, ""), // regex utilizado para eliminar tags en la descripcion
             healthScore: el.healthScore,
             // la propiedad stepByStep se incorpora a continuacion
             image: el.image,
@@ -86,24 +84,24 @@ const getAllRecipes = async function () {
 router.get('/', async (req, res, next) => {
 
     console.log(API_KEYA)
-    
+
     try {
 
-    const name = req.query.name
-    let totalRecipes = await getAllRecipes();
-    /* console.log (totalRecipes) */
-    if (name) {
-        let recipeName = await totalRecipes.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
-        recipeName.length ?
-            res.status(200).send(recipeName) :
-             res.status(404).send("Cant find the recipe") 
-    } else {
-        res.status(200).send(totalRecipes)
-    }
+        const name = req.query.name
+        let totalRecipes = await getAllRecipes();
+        /* console.log (totalRecipes) */
+        if (name) {
+            let recipeName = await totalRecipes.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+            recipeName.length ?
+                res.status(200).send(recipeName) :
+                res.status(404).send("Cant find the recipe")
+        } else {
+            res.status(200).send(totalRecipes)
+        }
 
-} catch (error) {
-    next(error)
-}
+    } catch (error) {
+        next(error)
+    }
 
 })
 
@@ -133,7 +131,7 @@ router.get('/:id', async (req, res, next) => {    // el next esta para que luego
         let recipe;
         let recipeApi
         let recipeInfoStepByStep
-        
+
         const id = req.params.id;
 
         if (typeof id === "string" && id.length > 8) {
@@ -146,30 +144,30 @@ router.get('/:id', async (req, res, next) => {    // el next esta para que luego
                         attributes: [],
                     },
                 }
-            })  
- 
+            })
+
         } else {
             response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEYA}`)
             recipeApi = response.data
 
-                if (recipeApi.analyzedInstructions[0] !== undefined) {
-                    recipeInfoStepByStep  = recipeApi.analyzedInstructions[0].steps.map(elem => elem.step)
-                } else {
-                    recipeInfoStepByStep = ["There is no stepByStep"]
-                }
-               
-            recipe =  {
-                    id: recipeApi.id,
-                    name: recipeApi.title,
-                    dishSummary: recipeApi.summary.replace(/<[^>]+>/g,""),
-                    healthScore: recipeApi.healthScore,
-                    stepByStep : recipeInfoStepByStep,
-                    image: recipeApi.image,
-                    diets: recipeApi.diets
-                };
-          
+            if (recipeApi.analyzedInstructions[0] !== undefined) {
+                recipeInfoStepByStep = recipeApi.analyzedInstructions[0].steps.map(elem => elem.step)
+            } else {
+                recipeInfoStepByStep = ["There is no stepByStep"]
             }
-            
+
+            recipe = {
+                id: recipeApi.id,
+                name: recipeApi.title,
+                dishSummary: recipeApi.summary.replace(/<[^>]+>/g, ""), //delete text tags
+                healthScore: recipeApi.healthScore,
+                stepByStep: recipeInfoStepByStep,
+                image: recipeApi.image,
+                diets: recipeApi.diets
+            };
+
+        }
+
         res.status(201).send(recipe)
 
     } catch (error) {
@@ -183,10 +181,10 @@ router.post('/', async (req, res, next) => {    // el next esta para que luego s
 
         function toUpperCasefunc(arg) {
             var b = arg[0].toUpperCase() + arg.substring(1)
-            return b 
+            return b
         }
         name = toUpperCasefunc(name)
- 
+
         let newRecipe = await Recipe.create({
             name,
             dishSummary,
@@ -208,6 +206,33 @@ router.post('/', async (req, res, next) => {    // el next esta para que luego s
         next(error)
     }
 })
+
+/*  router.put('/put/:id', function(req, res) {
+
+   Recipe.findByPk(req.params.id).then(function(recipe) {
+     recipe.update({
+                   name: req.body.name,
+                   dishSummary: req.body.dishSummary,
+                   healthScore: req.body.healthScore,
+                   stepByStep : req.body.stepByStep,
+                   image: req.body.image,
+                   diets: req.body.diets
+     }).then((recipe) => {
+       res.json(recipe);
+     });
+   });
+ }); */
+
+ router.delete('/delete/:id', function(req, res) {
+
+    Recipe.findByPk(req.params.id)
+    .then(function(recipe) {
+      recipe.destroy();
+    })
+    .then((recipe) => {
+      res.sendStatus(200);
+    });
+  });
 
 
 module.exports = router;
