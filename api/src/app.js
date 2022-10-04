@@ -30,6 +30,7 @@ server.use(morgan('dev'));
 // esto es para el deploy
 
 const { ALLOW_ALL} = require('./DB_variables.js');
+require('dotenv').config();
 
 server.use((req, res, next) => {
   //res.header('Access-Control-Allow-Origin', `https://qatarbets-frontend-git-develop-nachoaar.vercel.app`); 
