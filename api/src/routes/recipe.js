@@ -7,6 +7,7 @@ const { Recipe, Diet } = require('../db');
 const { Op, addDiet } = require('sequelize');
 const { getKey } = require('../keys');
 
+
 const router = Router();
 
 // Configurar los routers
@@ -223,16 +224,117 @@ router.post('/', async (req, res, next) => {    // el next esta para que luego s
    });
  }); */
 
- router.delete('/delete/:id', function(req, res) {
+router.delete('/delete/:id', function (req, res) {
 
     Recipe.findByPk(req.params.id)
-    .then(function(recipe) {
-      recipe.destroy();
-    })
-    .then((recipe) => {
-      res.sendStatus(200);
-    });
-  });
+        .then(function (recipe) {
+            recipe.destroy();
+        })
+        .then((recipe) => {
+            res.sendStatus(200);
+        });
+});
+
+/* router.get('/allrecipe/tot', async (req, res, next) => {
+
+  /* console.log(API_KEYA) */
+
+/* try {  */
+
+
+/* let totalRecipes = await getAllRecipes();
+ /* console.log (totalRecipes) */
+
+/*  for ( let i = 0 ; i < totalRecipes.length; i++){
+   if (totalRecipes[i].stepByStep === undefined) {
+       totalRecipes[i].stepByStep = ["There is no stepByStep"]
+   }
+   if (totalRecipes[i].dishSummary === undefined) {
+       totalRecipes[i].dishSummary = "dishSummary"
+   }
+    var { name, dishSummary, healthScore, image} = totalRecipes[i];
+     */
+/* await Recipe.create({
+    name,
+    dishSummary,
+    healthScore,
+    
+    image,
+    createdInDb: true
+})}  */
+
+/*  let allRecipess = []  
+allRecipess = await Recipe.findAll()
+
+res.status(200).send(allRecipess)  */
+
+/*   } catch (error) {
+   next(error)
+}   */
+
+/*  })  */
+
+
+
+
+router.get('/allTeams/Wc', async (req, res, next) => {
+
+    var API_KEYB = "993943c6a7d4a29527f6e9c92b7d0541";
+
+    let A
+    let B
+
+         
+
+A = axios.get('https://v3.football.api-sports.io/teams?league=1&season=2022', {
+  headers: {
+    
+    "x-rapidapi-host": "v3.football.api-sports.io",
+		"x-rapidapi-key": `${API_KEYB}`
+  }
+})
+.then((res) => {
+    B = res.data
+    console.log(B)
+})
+.catch((error) => {
+  console.error(error)
+})
+
+res.status(200).send('exito')
+
+    
+
+   
+
+
+   /*  try {
+
+        var config = {
+            method: 'get',
+            url: 'https://v3.football.api-sports.io/teams?league=1&season=2022',
+            headers: {
+                'x-rapidapi-host' : 'v3.football.api-sports.io',
+                'x-rapidapi-key': `${API_KEYB}`
+              }
+        };
+    
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        
+
+    } catch (error) {
+        next(error)
+    } */
+
+})
+
 
 
 module.exports = router;
