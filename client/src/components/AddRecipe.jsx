@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
 import '../styledComponents/addRecipe.css';
+import { axiosURL } from "../index";
 
 function validate(input) {
     let errors = {};
@@ -97,7 +98,7 @@ export default function AddRecipe() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = "http://localhost:3000/recipes";
+        window.location.href = `${axiosURL}/recipes`;
     }
 
     console.log(input)

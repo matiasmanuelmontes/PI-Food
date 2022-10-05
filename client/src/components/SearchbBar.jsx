@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { searchRecipe } from '../actions';
 import '../styledComponents/searchBar.css';
+import { axiosURL } from "../index";
 
 
 export default function SearchBar() {
@@ -24,12 +25,12 @@ export default function SearchBar() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = "http://localhost:3000/recipes/";
+        window.location.href = `${axiosURL}/recipes/`;
     }
 
     function redirectAddRecipe(event) {
         event.preventDefault();
-        window.location.href = "http://localhost:3000/recipes/addRecipe";
+        window.location.href = `${axiosURL}/recipes/addRecipe`;
     }
 
 
