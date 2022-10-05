@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './store' 
 
+export const axiosURL =
+  process.env.REACT_APP_API ||
+  "https://pi-food-production-ac68.up.railway.app"||
+  "http://localhost:3001";
+
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode> 

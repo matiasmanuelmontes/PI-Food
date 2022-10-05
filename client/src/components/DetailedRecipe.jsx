@@ -3,6 +3,7 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import '../styledComponents/detailedRecipe.css';
 import axios from "axios";
+import { axiosURL } from "../index";
 
 
 
@@ -27,7 +28,7 @@ export default function RecipeDetail(/* props */) {
     console.log(id)
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/api/recipes/${id}`)
+        axios.get(`${axiosURL}/api/recipes/${id}`)
             .then((response) => {  // este response es videogame
                 response.data.length > 0 ?
                     setMyRecipe(response.data[0]) :
@@ -61,7 +62,7 @@ export default function RecipeDetail(/* props */) {
 
     async function deleteRecipe(id) {
         if (myNewRecipe.createdInDb) {
-            await axios.delete(`http://localhost:3001/api/recipes/delete/${id}`);
+            await axios.delete(`${axiosURL}/api/recipes/delete/${id}`);
             history.push('/recipes')
         }
     }
