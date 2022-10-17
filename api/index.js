@@ -42,5 +42,5 @@ const cors = require('cors');
   server.use(cors({ credentials: true }));
   server.listen(process.env.PORT || PORT, () => {
     console.log(`Servidor Activo!`);
-  });
+  }); 
 }); 

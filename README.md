@@ -6,6 +6,15 @@
   <img height="200" src="./cooking.png" />
 </p>
 
+
+## Resumen del proyecto
+
+Este es un proyecto realizado en el bootcamp de Henry de modo individual por Matias Montes, esta desarrollado con Javascript, React, Redux, Express, Sequelize, PostgreSQL, GIT. Este Proyecto esta centralizado en proveer las funcionalidades y su aprendizaje de un sitio web siendo este su punto fuerte, mientras que su presentacion CSS es solo para poder mostrar las funcionalidades.
+
+## El proyecto esta deployado
+
+El proyecto tiene deploy para poder verlo acceder al siguiente link: https://pi-food-proyect.vercel.app/recipes/
+
 ## Objetivos del Proyecto
 
 - Construir una App utlizando React, Redux, Node y Sequelize.
@@ -187,3 +196,4 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 - [ ] Al menos tener un componente del frontend con sus tests respectivos
 - [ ] Al menos tener una ruta del backend con sus tests respectivos
 - [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
+
