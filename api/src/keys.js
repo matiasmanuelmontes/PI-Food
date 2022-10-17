@@ -1,8 +1,16 @@
 
 function getKey () {
-return  API_KEY1;
-}
 
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+
+      let a =  AllKeys[getRandomInt(8)]
+    console.log (a)
+    return  a;
+
+}
+ 
 module.exports = {getKey};
 
  // api  
@@ -39,4 +47,15 @@ const API_KEY8 = "51e21320028a400a82fe35535ab3cd1b"
 
 const API_KEY9 = "d28a45d38e354c1dbe8490ee25b0f875"
 
-const API_KEY10 = "aae33b9a5027414f9"  
+const AllKeys = [
+    "575618d2a28a4c40807b0a6a9faee8e4",
+    "880cf0e63ea24415abdbfa6aab1b7b8a",
+    "82391ac3952a4287978a048301fc1fb6",
+    "bbb4b96713e54cff8ac0b727485510b3",
+    "000bb79cb9974e12a35cde5da18318e5",
+    "237182fee3534b17a9dbd50658ef9825",
+    "f7686d9cd3ee41778ef68e2a103cef06",
+    "29856573cd9549e696ae56e64f4569fc",
+    "51e21320028a400a82fe35535ab3cd1b",
+    "d28a45d38e354c1dbe8490ee25b0f875"
+]

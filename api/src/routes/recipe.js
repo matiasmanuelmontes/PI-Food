@@ -13,7 +13,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-const API_KEYA = getKey();
+/* const API_KEYA = getKey(); */
 
 const getRecipeApi = async function () {
 
@@ -22,8 +22,7 @@ const getRecipeApi = async function () {
     let recipeInfoStepByStep
     let stepByStep1
 
-
-    recipeApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`)
+    recipeApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${getKey()}&addRecipeInformation=true&number=100`)
 
     recipeInfoStepByStep = await recipeApi.data.results.map(el => {
 
@@ -80,9 +79,10 @@ const getAllRecipes = async function () {
 
 router.get('/', async (req, res, next) => {
 
-    console.log(API_KEYA)
+    /* console.log(API_KEYA) */
 
     try {
+        getKey();
 
         const name = req.query.name
         let totalRecipes = await getAllRecipes();
@@ -125,7 +125,7 @@ router.get('/:id', async (req, res, next) => {    // el next esta para que luego
             })
 
         } else {
-            response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEYA}`)
+            response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${getKey()}`)
             recipeApi = response.data
 
             if (recipeApi.analyzedInstructions[0] !== undefined) {
