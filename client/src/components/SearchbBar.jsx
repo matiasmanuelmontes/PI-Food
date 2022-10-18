@@ -25,12 +25,12 @@ export default function SearchBar() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = `${axiosURL}/recipes/`;
+        window.location.href = `/recipes/`;
     }
 
     function redirectAddRecipe(event) {
         event.preventDefault();
-        window.location.href = `${axiosURL}/recipes/addRecipe`;
+        window.location.href = `/recipes/addRecipe`;
     }
 
 

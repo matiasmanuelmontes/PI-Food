@@ -98,7 +98,7 @@ export default function AddRecipe() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = `${axiosURL}/recipes`;
+        window.location.href = `/recipes`;
     }
 
     console.log(input)
