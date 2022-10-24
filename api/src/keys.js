@@ -16,9 +16,7 @@ module.exports = {getKey};
  // api  
 
 // API_KEY="575618d2a28a4c40807b0a6a9faee8e4"  
-
-//  apiUser: matiasmanuelmontes  
-//  apiMail: matiasmanuelmontes@gmail.com  
+ 
 //  apiPass: 12345m4pi  
 //  apiKey = 575618d2a28a4c40807b0a6a9faee8e4  
 //  apiUsedUrl = https://api.spoonacular.com/recipes/complexSearch?apiKey=575618d2a28a4c40807b0a6a9faee8e4  
