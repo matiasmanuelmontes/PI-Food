@@ -25,7 +25,7 @@ export default function SearchBar() {
 
     function redirectHome(event) {
         event.preventDefault();
-        window.location.href = `/recipes/`;
+        window.location.href = `/`;
     }
 
     function redirectAddRecipe(event) {
@@ -39,7 +39,7 @@ export default function SearchBar() {
             <input type="text" class="search" onChange={onInputChange} value={search} />
             <input type="submit" class="search" value="Search" />
         </form>
-        <button name="redirectHome" class="home" onClick={redirectHome}>Home</button>
+        <button name="redirectHome" class="home" onClick={redirectHome}>Landing Page</button>
         <button name="redirectAddRecipe" class="home" onClick={redirectAddRecipe}>Add Recipe</button>
     </div>
 }
