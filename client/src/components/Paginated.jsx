@@ -10,7 +10,7 @@ export default function Paginated({ recipePerPage, recipes, paginated }) {
 
     return (
         <nav>
-            <h5 className="paginatedPages">Pages</h5>
+            <h5 className="paginatedPages">Select Page</h5>
             <ul  className="paginated">
                 {pageNumbers && pageNumbers.map(number => (
                     <li  className="number"  key={number}>

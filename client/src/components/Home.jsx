@@ -7,13 +7,14 @@ import RecipeCard from './RecipeCard';
 import Paginated from "./Paginated";
 import { filterRecipeByDiet, sort, sortHealthScore } from "../actions";
 import SearchBar from "./SearchbBar";
+import ProgressBar from "./ProgressBar";
 import '../styledComponents/home.css';
 
 export default function Home() {
 
     let recipes = useSelector((state) => state.filteredRecipes)
     let dispatch = useDispatch()
-    
+
     // Aqui comienza lo de paginado
     const [currentPage, setCurrentPage] = useState(1)
     const [recipePerPage, setRecipePerPage] = useState(9)
@@ -21,21 +22,21 @@ export default function Home() {
     const indexOfFirstRecipe = indexOfLastRecipe - recipePerPage // 0
     const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe) // 0 al 3
 
-    const paginated = ( pageNumber ) => {
+    const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
-     }
-     
-      function handleOnClickNextPage (){
-        if ((Math.ceil(recipes.length / recipePerPage)) > (currentPage)){
-        setCurrentPage(currentPage + 1)
-        }  
-     } 
+    }
 
-     function handleOnClickPreviusPage (){
-        if (1 < currentPage){
-        setCurrentPage(currentPage - 1)
-        }  
-     } 
+    function handleOnClickNextPage() {
+        if ((Math.ceil(recipes.length / recipePerPage)) > (currentPage)) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
+
+    function handleOnClickPreviusPage() {
+        if (1 < currentPage) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
 
     // aqui finaliza lo de paginado y se agrega al div
 
@@ -45,17 +46,20 @@ export default function Home() {
 
     function onSelectChangeOrder(e) {
         e.preventDefault();
-        dispatch(sort(e.target.value))
+        dispatch(sort(e.target.value));
+         setCurrentPage(1) 
     }
 
     function onSelectChangeHealthScore(e) {
         e.preventDefault();
-        dispatch(sortHealthScore(e.target.value))
+        dispatch(sortHealthScore(e.target.value));
+         setCurrentPage(1) 
     }
 
     function onSelectChangeFilterDiet(e) {
         e.preventDefault();
-        dispatch(filterRecipeByDiet(e.target.value))
+        dispatch(filterRecipeByDiet(e.target.value));
+         setCurrentPage(1) 
     }
 
     function handleOnClickReset(e) {
@@ -91,8 +95,8 @@ export default function Home() {
                         <option value={diet.name}>{diet.name}</option>
                     ))}
                 </select>
-                </div>
-                <div>
+            </div>
+            <div>
 
                 <Paginated
                     recipePerPage={recipePerPage}
@@ -100,18 +104,19 @@ export default function Home() {
                     paginated={paginated}
                 />
                 <div>
-                <button onClick={(e) => { handleOnClickPreviusPage(e) }} className="homeNextPreviusPages">
-                previus page
-               </button>
-                <button onClick={(e) => { handleOnClickNextPage(e) }} className="homeNextPreviusPages">
-                next page
-               </button>
+                    <button onClick={(e) => { handleOnClickPreviusPage(e) }} className="homeNextPreviusPages">
+                        previus page
+                    </button>
+                    <h5  className="currentPage" >Current Page: {currentPage} </h5>
+                    <button onClick={(e) => { handleOnClickNextPage(e) }} className="homeNextPreviusPages">
+                        next page
+                    </button>
                 </div>
-                
-                {currentRecipes && currentRecipes.map((element) => {
+
+                {recipes ? currentRecipes.map((element) => {
 
                     return (
-                        <div  className="homeCardGrid" >
+                        <div className="homeCardGrid" >
                             <Link to={'/recipes/' + element.id}>
                                 <RecipeCard
                                     id={element.id}
@@ -125,7 +130,7 @@ export default function Home() {
                             </Link>
                         </div>
                     )
-                })}
+                }) : <ProgressBar done="100" />}
             </div>
         </div>
     )
