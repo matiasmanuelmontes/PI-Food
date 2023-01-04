@@ -18,7 +18,12 @@ const API_KEYA = getKey();
 router.get('/', async (req, res, next) => {
 
     try {
-     const dietApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`) 
+
+        let allDiets1 = []  
+            allDiets1 = await Diet.findAll()
+            if( allDiets1.length > 0) { res.send(allDiets1)}
+            else {
+             const dietApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEYA}&addRecipeInformation=true&number=100`) 
     
     /* vegetarian, vegan, glutenFree  */
      
@@ -40,6 +45,8 @@ router.get('/', async (req, res, next) => {
             /* console.log("allDiets")  */
              /* console.log(allDiets)   */ 
              res.send(allDiets) 
+
+            }
 
             } catch (error) {
                 next(error)
