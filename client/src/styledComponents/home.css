@@ -37,6 +37,9 @@
       display: flex;
       flex-direction: column;
   }
+  .homePaginated{
+    background-color: rgb(2, 185, 72);
+  }
 
   .homeCardGrid{
     

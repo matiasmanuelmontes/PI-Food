@@ -3,6 +3,10 @@
     text-align: center
 }
 
+.homePaginated{
+  background-color: rgb(2, 185, 72);
+}
+
 .number {
     
     background-color: white;
