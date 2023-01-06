@@ -8,24 +8,34 @@
     margin-left : 30vw;
     position:relative;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 0px;
       border:1px solid black;
       padding: 10px ;
       border-radius: 15px;
   }
+
+  .homeFirstDiv {
+      display: flex;
+      flex-direction: row;
+      background-color: grey;
+  }
+  
 
   .homeSelects{
     grid-auto-columns:auto;
     grid-gap: 10px;
     background-color: grey;
     width: 34vw;
-    margin-left : 33vw;
+    margin-left : 1vw;
     position:relative;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
       border:1px solid black;
       padding: 10px ;
       border-radius: 15px;
+      display: flex;
+      flex-direction: column;
   }
 
   .homeCardGrid{

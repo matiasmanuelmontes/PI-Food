@@ -17,8 +17,10 @@
 }
 
 .searchBackground {
-    background-color: grey;
+    background-color: rgb(2, 185, 72);
     margin-bottom: 10px;
     border:1px solid black;
     padding: 10px ;
+    margin-left : 1vw;
+    margin-top:8px;
 }
