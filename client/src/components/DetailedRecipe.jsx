@@ -88,9 +88,9 @@ export default function RecipeDetail(/* props */) {
                             <div></div>}
                         <h1 className="titleDetail">{myNewRecipe.name}</h1>
                         <img src={myNewRecipe.image} alt="image" className="imgDet" />
-                        <p className="titleDetail">Dish Summary: {myNewRecipe.dishSummary}</p>
+                        <p className="SummaryDetail">Dish Summary: {myNewRecipe.dishSummary}</p>
                         <p className="healthScoreDetail">Healt Score: {myNewRecipe.healthScore}</p>
-                        <p className="titleDetail">Step By Step: {myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</p>
+                        <p className="SummaryDetail">Step By Step: {myNewRecipe.createdInDb ? myNewRecipe.stepByStep : myNewRecipe.stepByStep.map(el => el + (' '))}</p>
                         
                         <ul className="listDetail" >Diets: {!myNewRecipe.createdInDb ?
                             myNewRecipe.diets.map(elem => (

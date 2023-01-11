@@ -11,7 +11,7 @@
     
   grid-auto-columns:auto;
   grid-gap: 10px;
-  background-color: white;
+  background-color: rgb(2, 185, 72);
   width: 60vw;
   margin-left : 20vw;
   position:relative;
@@ -21,6 +21,22 @@
     padding: 10px ;
     border-radius: 15px;
 }
+
+.SummaryDetail {
+    
+  grid-auto-columns:auto;
+  grid-gap: 10px;
+  background-color: white;
+  width: 50vw;
+  margin-left : 25vw;
+  position:relative;
+  box-sizing: border-box;
+  margin-top: 10px;
+    border:1px solid black;
+    padding: 10px ;
+    border-radius: 15px;
+}
+
 
 .healthScoreDetail {
     
@@ -54,10 +70,11 @@
 }
 
 .imgDet {
-  width: 50%;
+  width: 51%;
   margin-top: 15px;
   border-radius: 20px;
   background-color: white;
+  margin-left : 12px;
 }
 
 .descDet {
