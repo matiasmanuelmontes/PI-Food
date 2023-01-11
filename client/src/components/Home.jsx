@@ -72,21 +72,21 @@ export default function Home() {
     return (
         <div className="homeBackGround">
 
-            <h1 className="homeTitlePincipal">Recipes Finder</h1>
+            <header className="homeTitlePincipal">Recipes Finder</header>
             <div className="homeFirstDiv">
                 <SearchBar />
 
                 
                 <div className="homeSelects">
-                    <select name="selectOrder" onChange={onSelectChangeOrder}>
+                    <select className="homeEachSelect" name="selectOrder" onChange={onSelectChangeOrder}>
                         <option value='ORDER_A-Z'>Order A-Z</option>
                         <option value='ORDER_Z-A'>Order Z-A</option>
                     </select>
-                    <select name="selectHealthScoreOrder" onChange={onSelectChangeHealthScore}>
+                    <select className="homeEachSelect" name="selectHealthScoreOrder" onChange={onSelectChangeHealthScore}>
                         <option value='HEALTH_SCORE_ASCENDENT'>Health Score Ascendent</option>
                         <option value='HEALTH_SCORE_DESCENDENT'>Health Score Descendent</option>
                     </select>
-                    <select name="selectFiler" onChange={e => onSelectChangeFilterDiet(e)}>
+                    <select className="homeEachSelect" name="selectFiler" onChange={e => onSelectChangeFilterDiet(e)}>
                         {/* <option value='ALL'>All</option>
                     <option value='lacto ovo vegetarian'>Vegetarian</option>
                     <option value='vegan'>Vegan</option>
@@ -96,7 +96,7 @@ export default function Home() {
                             <option value={diet.name}>{diet.name}</option>
                         ))}
                     </select>
-                    <button onClick={e => { handleOnClickReset(e) }}>
+                    <button className="homeEachSelect" onClick={e => { handleOnClickReset(e) }}>
                     Reset
                     </button>
                     <ProgressBar done="100" />

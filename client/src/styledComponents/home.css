@@ -1,22 +1,27 @@
 .homeTitlePincipal {
-    
-    
     grid-auto-columns:auto;
     grid-gap: 10px;
-    background-color: rgb(2, 185, 72);
-    width: 40vw;
-    margin-left : 30vw;
-    position:relative;
+    background-color:  rgb(2, 185, 72);
+    width: 100%;
     box-sizing: border-box;
     margin-top: 0px;
-      border:1px solid black;
-      padding: 10px ;
-      border-radius: 15px;
+    margin-bottom: 20px;
+    border:1px solid black;
+    padding: 10px ;
+    overflow:hidden;
+    font-size: 50px;
+    /* position: fixed; */
+    height: auto;
+    top: 0;
+    left: 0;
+     z-index: 0;
+     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
   }
 
   .homeFirstDiv {
       display: flex;
       flex-direction: row;
+      /* position:relative; */
       
   }
   
@@ -25,7 +30,7 @@
     grid-auto-columns:auto;
     grid-gap: 10px;
     background-color: grey;
-    width: 34vw;
+    width: 24vw;
     margin-left : 1vw;
     position:relative;
     box-sizing: border-box;
@@ -37,8 +42,12 @@
       display: flex;
       flex-direction: column;
   }
-  .homePaginated{
-    background-color: rgb(2, 185, 72);
+
+  .homeEachSelect{
+    border-radius: 10px;
+    width: 20vw;
+    margin-left : 1vw;
+    text-align: center;
   }
 
   .homeCardGrid{

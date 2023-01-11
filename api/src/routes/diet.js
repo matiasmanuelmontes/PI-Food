@@ -18,7 +18,6 @@ const API_KEYA = getKey();
 router.get('/', async (req, res, next) => {
 
     try {
-
         let allDiets1 = []  
             allDiets1 = await Diet.findAll()
             if( allDiets1.length > 0) { res.send(allDiets1)}
