@@ -64,9 +64,11 @@
     position:relative;
     box-sizing: border-box;
     margin-top: 10px;
-      border:1px solid black;
-      padding: 10px ;
-      border-radius: 15px;
+    border:1px solid black;
+    padding: 10px ;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    
 }
 
 .imgDet {
@@ -90,6 +92,7 @@
   padding: 0 4px;
   text-decoration: none;
   background-color: white;
+  border-radius: 10px;
 }
 
  .dietItem {
@@ -98,6 +101,8 @@
   border: black 2px solid;
   display: inline;
   margin-right: 10px;
+  border-radius: 10px;
+  
 }
 
 .detailBackGround{
