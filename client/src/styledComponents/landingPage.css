@@ -6,14 +6,14 @@
     background-color: grey;
     margin-top: 0px;
     align-items: center;
-    width: 60vw;
-    margin-left : 20vw;
+    width: 100%;
+    /* margin-left : 20vw; */
     position:inherit;
     box-sizing: border-box;
     
       border:1px solid black;
       padding: 10px ;
-      border-radius: 15px;
+      /* border-radius: 15px; */
   }
 
 .landingHomeButton{
@@ -22,9 +22,13 @@
     padding: 10px ;
     margin-top: 10px;
     border-radius: 5px;
-    height: 50px;
-    width: 100px;
+    height: 75px;
+    width: 150px;
     font-size: large;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
 }
 
 .landingHomeButton:hover {
@@ -32,6 +36,22 @@
   color: black;
   cursor:alias;
  } 
+
+.landingDescription{
+    
+  grid-auto-columns:auto;
+  grid-gap: 10px;
+  background-color: white;
+  width: 60vw;
+  margin-left : 20vw;
+  position:relative;
+  box-sizing: border-box;
+  margin-top: 220px;
+    border:1px solid black;
+    padding: 10px ;
+    border-radius: 15px;
+    font-weight: 500;
+}
 
 .landingBackGround{
   background: url('https://static01.nyt.com/images/2016/08/11/well/well_nutritionforrunners_gif/well_nutritionforrunners_gif-jumbo-v5.gif') no-repeat center center fixed;
