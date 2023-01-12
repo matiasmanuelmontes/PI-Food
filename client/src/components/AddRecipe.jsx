@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiets, postRecipe } from "../actions";
 import '../styledComponents/addRecipe.css';
-import { axiosURL } from "../index";
+
 
 function validate(input) {
     let errors = {};
@@ -110,30 +110,30 @@ export default function AddRecipe() {
             <h1 className="addTitlePincipal">Create your Recipe</h1>
             <form onSubmit={(e) => onSubmit(e)} class="addRecipeForm" >
                 <div>
-                    <label htmlFor="">Name: </label>
-                    <input onChange={onInputChange} name="name" type="text" value={input.name} className="addInput" placeholder="Insert a name" />
+                    {/* <label htmlFor="">Name: </label> */}
+                    <input onChange={onInputChange} name="name" type="text" value={input.name} className="addInputName" placeholder="Insert a name" />
                     {errors.name && (
                         <p classname="error" >{errors.name}</p>
                     )}
                 </div>
                 <div>
-                    <label htmlFor="">Image: </label>
-                    <input onChange={onInputChange} name="image" type="text" value={input.image} placeholder="Insert an image"/>
+                    {/* <label htmlFor="">Image: </label> */}
+                    <input className="addInputURL" onChange={onInputChange} name="image" type="text" value={input.image} placeholder="Insert an image URL"/>
                 </div>
-                <div>
-                    <label htmlFor="">DishSummary: </label>
-                    <input onChange={onInputChange} name="dishSummary" type="text" value={input.dishSummary} placeholder="Insert a description" />
+                <div >
+                    {/* <label htmlFor="" className="addSumaryOrder">DishSummary: </label> */}
+                    <textarea className="addInputsummary" onChange={onInputChange} name="dishSummary" type="text" value={input.dishSummary} placeholder="Insert a description"  />
                     {errors.dishSummary && (
                         <p classname='error' >{errors.dishSummary}</p>
                     )}
                 </div>
                 <div>
                     <label htmlFor="">Health Score: </label>
-                    <input onChange={onInputChange} name="healthScore" type="text" value={input.healthScore} placeholder="Number between 1 and 100" />
+                    <input className="addInputHealthScore" onChange={onInputChange} name="healthScore" type="text" value={input.healthScore} placeholder="Number 1 up to 100" />
                 </div>
                 <div>
-                    <label htmlFor="">Step By Step: </label>
-                    <input onChange={onInputChange} name="stepByStep" type="text" value={input.stepByStep} placeholder="Insert a stepByStep"/>
+                    {/* <label htmlFor="">Step By Step: </label> */}
+                    <textarea className="addInputsummary" onChange={onInputChange} name="stepByStep" type="text" value={input.stepByStep} placeholder="Insert a stepByStep"/>
                 </div>
                 {/* <div>
                     <label htmlFor="">Diets: </label>

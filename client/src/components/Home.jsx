@@ -91,7 +91,7 @@ export default function Home() {
                     <option value='lacto ovo vegetarian'>Vegetarian</option>
                     <option value='vegan'>Vegan</option>
                     <option value='gluten free'>Gluten Free</option> */}
-                        <option value='ALL'>All</option>
+                        <option value='ALL'>All Diets</option>
                         {dietsAll && dietsAll.map((diet) => (
                             <option value={diet.name}>{diet.name}</option>
                         ))}

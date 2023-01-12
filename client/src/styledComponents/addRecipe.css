@@ -3,8 +3,8 @@
   grid-auto-columns:auto;
   grid-gap: 10px;
   background-color: grey;
-  width: 50vw;
-  margin-left : 25vw;
+  width: 70vw;
+  margin-left : 15vw;
   position:relative;
   box-sizing: border-box;
   margin-top: 10px;
@@ -49,6 +49,7 @@
   border-radius: 5px;
 }
 
+
 .addChoseDiet {
     
   grid-auto-columns:auto;
@@ -64,8 +65,58 @@
     border-radius: 15px;
 }
 
-.addInput{
-  size: 200px;
+.addInputName{
+  width: 30vw;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-top: 1px solid;
+  padding: 10px ;
+  border-radius: 5px;
+}
+
+.addInputURL{
+  width: 50vw;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-top: 1px solid;
+  padding: 10px ;
+  border-radius: 5px;
+}
+
+.addInputsummary{
+  width: 50vw;
+  height: 20vh;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-top: 1px solid;
+  padding: 10px ;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.addSumaryOrder{
+  margin-bottom: 40px;
+}
+
+.addInputHealthScore{
+  width: 11vw;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-top: 1px solid;
+  padding: 10px ;
+  border-radius: 5px;
+}
+
+.addError{
+  background-color: rgb(2, 185, 72);
+  border: 1px solid;
+  display: inline;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 10px ;
+
 }
 
 .addBackGround{
