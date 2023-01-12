@@ -66,11 +66,10 @@
       border:1px solid black;
   }
 
-  .homeBackGround{
+  .homeBackGround{ 
     
-    /* background-color: white; */
-    background: url('https://i.pinimg.com/originals/cc/53/18/cc5318af171935951419fce26d040e82.jpg') no-repeat center center fixed; 
- 
+     background-color: white; 
+    /* background: url('https://i.pinimg.com/originals/cc/53/18/cc5318af171935951419fce26d040e82.jpg') no-repeat center center fixed; */
   position:relative;
    min-width: 400px; 
 	min-height: 1200px;
