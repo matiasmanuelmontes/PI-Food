@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getRecipes } from '../actions'
+import { getRecipes, getDiets } from '../actions'
 import { Link } from "react-router-dom";
 import RecipeCard from './RecipeCard';
 import Paginated from "./Paginated";
@@ -67,6 +67,23 @@ export default function Home() {
         dispatch(getRecipes());
     }
 
+    // Here comes the repeat function: 
+
+    let repeat10min;
+
+    function repeatEvery10min() {
+        repeat10min = setInterval(makeRequest, 600000);
+    }
+
+    function makeRequest() {
+        dispatch(getDiets());
+        console.log("Ha pasado 10 min.");  
+    }
+
+    repeatEvery10min();
+
+    /////////////////////////////////
+
     const dietsAll = useSelector((state) => state.diets)
 
     return (
@@ -76,7 +93,7 @@ export default function Home() {
             <div className="homeFirstDiv">
                 <SearchBar />
 
-                
+
                 <div className="homeSelects">
                     <select className="homeEachSelect" name="selectOrder" onChange={onSelectChangeOrder}>
                         <option value='ORDER_A-Z'>Order A-Z</option>
@@ -97,7 +114,7 @@ export default function Home() {
                         ))}
                     </select>
                     <button className="homeEachSelect" onClick={e => { handleOnClickReset(e) }}>
-                    Reset
+                        Reset
                     </button>
                     <ProgressBar done="100" />
                 </div>
@@ -119,28 +136,28 @@ export default function Home() {
                     </div>
                 </div>
 
-            </div>              
-                
+            </div>
 
-                {currentRecipes && currentRecipes.map((element) => {
 
-                    return (
-                        <div className="homeCardGrid" >
-                            <Link to={'/recipes/' + element.id}>
-                                <RecipeCard
-                                    id={element.id}
-                                    name={element.name}
-                                    image={element.image}
-                                    dishSummary={element.dishSummary}
-                                    healthScore={element.healthScore}
-                                    stepByStep={element.stepByStep}
-                                    diets={element.diets}
-                                />
-                            </Link>
-                        </div>
-                    )
-                })}
-            
+            {currentRecipes && currentRecipes.map((element) => {
+
+                return (
+                    <div className="homeCardGrid" >
+                        <Link to={'/recipes/' + element.id}>
+                            <RecipeCard
+                                id={element.id}
+                                name={element.name}
+                                image={element.image}
+                                dishSummary={element.dishSummary}
+                                healthScore={element.healthScore}
+                                stepByStep={element.stepByStep}
+                                diets={element.diets}
+                            />
+                        </Link>
+                    </div>
+                )
+            })}
+
         </div>
     )
 }
