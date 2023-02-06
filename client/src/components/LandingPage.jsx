@@ -8,7 +8,7 @@ export default function LandingPage() {
             <h1 className="landingTitlePincipal"> Welcome to the Recipes Finder Page </h1>
             <p className="landingDescription">In this website you can find the recipe you want, press the get in button and redirect to our home page! </p>
             <Link to='/recipes/'>
-                <button className="landingHomeButton">Get In</button>
+                <button className="slide-in-elliptic-bottom-fwd">Get In</button>
             </Link>
             
         </div>
