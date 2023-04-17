@@ -40,6 +40,6 @@
 	justify-content: center;
 	height: 100%;
 	width: 0;
-	opacity: 0;
-	transition: 20s ease 0.3s;
+	opacity: 0; 
+	transition: 50s ease 0.3s;
 }
